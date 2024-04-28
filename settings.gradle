@@ -1,0 +1,6 @@
+rootProject.name = "multi-module-hexagonal"
+
+include("example-api")
+include("example-batch")
+include("example-core")
+

@@ -1,0 +1,51 @@
+plugins {
+    id "java"
+    id "java-library"
+}
+
+/* 전체 프로젝트 공통 설정 */
+allprojects {
+    group = "com.example"
+    version = "0.0.1-SNAPSHOT"
+
+    repositories {
+        mavenCentral()
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+subprojects {
+    apply plugin: "java-library"
+
+    dependencies {
+
+    }
+}
+
+java {
+    sourceCompatibility = '17'
+}
+
+
+dependencies {
+    testImplementation(platform("org.junit:junit-bom:5.9.1"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+
+tasks.named("test") {
+    useJUnitPlatform()
+}
