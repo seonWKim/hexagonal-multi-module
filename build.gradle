@@ -1,6 +1,8 @@
 plugins {
     id "java"
     id "java-library"
+    id "org.springframework.boot" version "3.2.2"
+    id "io.spring.dependency-management" version "1.1.4"
 }
 
 /* 전체 프로젝트 공통 설정 */
@@ -30,9 +32,24 @@ java {
 }
 
 
-dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.9.1"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+subprojects {
+    apply plugin: "java-library"
+    apply plugin: "org.springframework.boot"
+    apply plugin: "io.spring.dependency-management"
+
+    dependencies {
+        compileOnly "org.projectlombok:lombok"
+        annotationProcessor "org.projectlombok:lombok"
+
+        implementation 'org.springframework.boot:spring-boot-starter'
+        implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+        implementation 'com.mysql:mysql-connector-j:8.2.0'
+        runtimeOnly 'com.h2database:h2'
+
+        testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.6.0"
+        testImplementation "org.junit.jupiter:junit-jupiter-api:5.6.0"
+        testImplementation "org.springframework.boot:spring-boot-starter-test"
+    }
 }
 
 tasks.test {

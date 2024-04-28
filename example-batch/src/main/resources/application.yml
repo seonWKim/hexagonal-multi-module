@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    include: db
+
+  batch:
+    job:
+      name: completedHistoryMigrationJob
+    jdbc:
+      initialize-schema: always
+

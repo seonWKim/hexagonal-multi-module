@@ -1,0 +1,12 @@
+### Create member
+POST http://localhost:8080/members
+Content-Type: application/json
+
+{
+  "name": "{{ $random.email }}",
+  "age": {{ $randomInt }}
+}
+
+### Get member
+GET http://localhost:8080/members/9
+

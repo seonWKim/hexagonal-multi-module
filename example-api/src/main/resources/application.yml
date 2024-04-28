@@ -1,0 +1,6 @@
+server:
+  port: 16000
+
+spring:
+  profiles:
+    include: db
