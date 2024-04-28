@@ -1,9 +1,7 @@
 # Purpose of This Project 
 The purpose of this project is to demonstrate how to implement a hexagonal architecture in a Spring Boot application and gradle multi module. 
 - Why hexagonal architecture? 
-  - It is a good way to separate concerns and make the application more modular and testable. 
-  - It is a good way to make the application more maintainable and scalable. 
-  - It is a good way to make the application more flexible and adaptable to changes. 
+  - Separating core domain logic from the adapters makes the application easier to change and test.
 - Why gradle multi module? 
   - Applications often have API and batch components, and it is a good way to separate concerns and make the application more modular and testable.
   - It's easy to share core business logic by adding [core module](./example-core) as a dependency to other modules([example-api](./example-api), [example-batch](./example-batch)). 
