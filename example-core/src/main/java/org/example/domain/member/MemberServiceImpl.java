@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class MemberServiceImpl implements MemberService {
+class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository;
 
     public MemberServiceImpl(MemberRepository memberRepository) {

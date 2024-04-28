@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class OrderFacadeImpl implements OrderFacade {
+class OrderFacadeImpl implements OrderFacade {
 
     private final MemberService memberService;
     private final OrderService orderService;
