@@ -29,14 +29,5 @@ public class CompletedOrderHistoryJpaEntity {
     @Column(name = "price", nullable = false)
     private int price;
 
-    public CompletedOrderHistoryJpaEntity() {
-
-    }
-
-    public CompletedOrderHistoryJpaEntity(OrderJpaEntity orderJpaEntity) {
-        this.orderId = orderJpaEntity.getId();
-        this.memberId = orderJpaEntity.getMemberId();
-        this.name = orderJpaEntity.getName();
-        this.price = orderJpaEntity.getPrice();
-    }
+    public CompletedOrderHistoryJpaEntity() {}
 }

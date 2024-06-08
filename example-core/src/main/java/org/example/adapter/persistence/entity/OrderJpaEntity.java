@@ -36,8 +36,4 @@ public class OrderJpaEntity {
         this.name = name;
         this.price = price;
     }
-
-    public void complete() {
-        this.completed = true;
-    }
 }

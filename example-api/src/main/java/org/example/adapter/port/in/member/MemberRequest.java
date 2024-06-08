@@ -1,4 +1,4 @@
-package org.example.api.member;
+package org.example.adapter.port.in.member;
 
 import org.hibernate.validator.constraints.Length;
 

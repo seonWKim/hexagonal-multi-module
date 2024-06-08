@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MemberJpaEntityMapper {
-
     public MemberJpaEntity toJpaEntity(Member member) {
         return new MemberJpaEntity(
                 member.getName(),

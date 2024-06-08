@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OrderJpaEntityMapper {
-
     public OrderJpaEntity toJpaEntity(Order order) {
         return new OrderJpaEntity(
                 order.getMemberId(),

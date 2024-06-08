@@ -1,4 +1,4 @@
-package org.example.infratructure;
+package org.example.adapter.config;
 
 import org.springframework.context.annotation.Configuration;
 

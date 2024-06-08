@@ -1,4 +1,4 @@
-package org.example.batch.order;
+package org.example.adapter.order;
 
 import java.util.Iterator;
 import java.util.List;

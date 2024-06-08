@@ -24,12 +24,10 @@ public class MemberJpaEntity {
     @Column(name = "age", nullable = false)
     private int age;
 
+    public MemberJpaEntity() {}
+
     public MemberJpaEntity(String name, int age) {
         this.name = name;
         this.age = age;
-    }
-
-    public MemberJpaEntity() {
-
     }
 }

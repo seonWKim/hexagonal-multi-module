@@ -1,4 +1,4 @@
-package org.example.batch.order;
+package org.example.adapter.order;
 
 import org.example.domain.order.CompletedOrderHistory;
 import org.example.domain.order.Order;

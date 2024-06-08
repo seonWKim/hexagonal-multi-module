@@ -1,4 +1,4 @@
-package org.example.api.order;
+package org.example.adapter.port.in.order;
 
 import org.example.application.port.in.command.OrderRegisterCommand;
 import org.example.domain.order.Order;

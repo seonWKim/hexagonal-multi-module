@@ -1,5 +1,8 @@
-package org.example.batch.order;
+package org.example.adapter.port.out;
 
+import org.example.adapter.order.CompletedOrderProcessor;
+import org.example.adapter.order.CompletedOrderReader;
+import org.example.adapter.order.CompletedOrderWriter;
 import org.example.domain.order.CompletedOrderHistory;
 import org.example.domain.order.Order;
 import org.springframework.batch.core.Job;

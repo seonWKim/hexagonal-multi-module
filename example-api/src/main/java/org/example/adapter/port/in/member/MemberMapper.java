@@ -1,4 +1,4 @@
-package org.example.api.member;
+package org.example.adapter.port.in.member;
 
 import org.example.application.port.in.command.MemberRegisterCommand;
 import org.example.domain.member.Member;

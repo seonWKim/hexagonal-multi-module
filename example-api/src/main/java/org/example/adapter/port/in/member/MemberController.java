@@ -1,4 +1,4 @@
-package org.example.api.member;
+package org.example.adapter.port.in.member;
 
 import org.example.application.port.in.MembersOperationPort;
 import org.springframework.web.bind.annotation.DeleteMapping;

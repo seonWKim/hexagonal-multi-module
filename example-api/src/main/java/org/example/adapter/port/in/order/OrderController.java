@@ -1,10 +1,9 @@
-package org.example.api.order;
+package org.example.adapter.port.in.order;
 
 import java.util.List;
 
 import org.example.application.port.in.MemberOrdersOperationPort;
 import org.example.application.port.in.command.OrderRegisterCommand;
-import org.example.domain.order.Order;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
