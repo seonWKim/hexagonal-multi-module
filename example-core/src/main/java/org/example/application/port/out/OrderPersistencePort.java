@@ -1,8 +1,11 @@
-package org.example.domain.order;
+package org.example.application.port.out;
 
 import java.util.List;
 
-public interface OrderRepository {
+import org.example.domain.order.CompletedOrderHistory;
+import org.example.domain.order.Order;
+
+public interface OrderPersistencePort {
 
     Order findById(Long id);
 

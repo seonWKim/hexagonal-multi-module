@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.example.domain.order.Order;
-import org.example.domain.order.OrderService;
+import org.example.application.port.in.OrdersOperationPort;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.stereotype.Component;
@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CompletedOrderReader implements ItemReader<Order> {
 
-    private final OrderService orderService;
+    private final OrdersOperationPort ordersOperationPort;
     private final int PAGE_SIZE = 1000;
     private Long lastId = 0L;
     private Iterator<Order> iterator;
@@ -27,7 +27,7 @@ public class CompletedOrderReader implements ItemReader<Order> {
             return iterator.next();
         }
 
-        List<Order> orders = orderService.findCompletedOrders(lastId, PAGE_SIZE);
+        List<Order> orders = ordersOperationPort.findCompletedOrders(lastId, PAGE_SIZE);
         if (orders.isEmpty()) {
             return null;
         } else {

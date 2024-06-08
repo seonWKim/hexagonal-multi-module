@@ -1,12 +1,13 @@
-package org.example.infrastructure.persistence;
+package org.example.adapter.persistence;
 
 import java.sql.PreparedStatement;
 import java.util.List;
 
+import org.example.adapter.persistence.entity.mapper.OrderJpaEntityMapper;
+import org.example.adapter.persistence.jpa.OrderJpaRepository;
+import org.example.application.port.out.OrderPersistencePort;
 import org.example.domain.order.CompletedOrderHistory;
 import org.example.domain.order.Order;
-import org.example.domain.order.OrderRepository;
-import org.example.infrastructure.persistence.jpa.OrderJpaRepository;
 import org.springframework.data.domain.Pageable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -15,14 +16,14 @@ import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
-public class OrderRepositoryImpl implements OrderRepository {
+public class OrderPersistencePortImpl implements OrderPersistencePort {
     private final OrderJpaRepository orderJpaRepository;
-
+    private final OrderJpaEntityMapper mapper;
     private final JdbcTemplate jdbcTemplate;
 
     @Override
     public Order findById(Long id) {
-        return orderJpaRepository.findById(id).orElseThrow();
+        return mapper.toDomain(orderJpaRepository.findById(id).orElseThrow());
     }
 
     @Override
@@ -32,7 +33,8 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public Long save(Order order) {
-        return orderJpaRepository.save(order).getId();
+        var entity = mapper.toJpaEntity(order);
+        return orderJpaRepository.save(entity).getId();
     }
 
     @Override

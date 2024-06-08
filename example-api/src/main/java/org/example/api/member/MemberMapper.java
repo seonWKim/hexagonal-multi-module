@@ -1,13 +1,13 @@
 package org.example.api.member;
 
+import org.example.application.port.in.command.MemberRegisterCommand;
 import org.example.domain.member.Member;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MemberMapper {
-    public Member mapToMember(MemberRequest memberRequest) {
-        final Member member = new Member(memberRequest.name(), memberRequest.age());
-        return member;
+    public MemberRegisterCommand mapToCommand(MemberRequest memberRequest) {
+        return new MemberRegisterCommand(memberRequest.name(), memberRequest.age());
     }
 
     public MemberResponse mapToMemberResponse(Member member) {

@@ -2,7 +2,8 @@ package org.example.api.order;
 
 import java.util.List;
 
-import org.example.application.OrderFacade;
+import org.example.application.port.in.MemberOrdersOperationPort;
+import org.example.application.port.in.command.OrderRegisterCommand;
 import org.example.domain.order.Order;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,30 +18,30 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 public class OrderController {
-    private final OrderFacade orderFacade;
+    private final MemberOrdersOperationPort memberOrdersOperationPort;
     private final OrderMapper orderMapper;
 
     @GetMapping("/members/{memberId}/orders")
     public List<OrderResponse> findOrders(@PathVariable Long memberId) {
-        return orderFacade.findOrders(memberId)
-                          .stream()
-                          .map(orderMapper::mapToOrderResponse)
-                          .toList();
+        return memberOrdersOperationPort.findOrders(memberId)
+                                        .stream()
+                                        .map(orderMapper::mapToOrderResponse)
+                                        .toList();
     }
 
     @PostMapping("/members/{memberId}/orders")
     public Long createOrder(@PathVariable Long memberId, @RequestBody OrderRequest orderRequest) {
-        final Order order = orderMapper.mapToOrder(memberId, orderRequest);
-        return orderFacade.order(memberId, order);
+        final OrderRegisterCommand order = orderMapper.mapToOrderRegisterCommand(memberId, orderRequest);
+        return memberOrdersOperationPort.order(memberId, order);
     }
 
     @PutMapping("/members/{memberId}/orders/{orderId}")
     public void completeOrder(@PathVariable Long memberId, @PathVariable Long orderId) {
-        orderFacade.completeOrder(memberId, orderId);
+        memberOrdersOperationPort.completeOrder(memberId, orderId);
     }
 
     @DeleteMapping("/members/{memberId}/orders/{orderId}")
     public void cancelOrder(@PathVariable Long memberId, @PathVariable Long orderId) {
-        orderFacade.cancel(memberId, orderId);
+        memberOrdersOperationPort.cancel(memberId, orderId);
     }
 }
